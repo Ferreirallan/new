@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Blindagem Empresarial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="banner.jpeg" type="image/x-icon">
+<script src="estiling.config.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">MÉTODO</div>
+        </div>
+    </header>
+
+    <section class="hero-bg-section reveal">
+    <div class="container hero-overlay-content">
+        <div class="hero-text-wrapper">
+            <h1>Método Blindagem Empresarial</h1>
+            <p class="pilot-tag">Modelo Piloto Oficial — Indústria Farmacêutica</p>
+            <p class="hero-desc">De checklist a sistema de risco, evidência e crescimento seguro.</p>
+        </div>
+    </div>
+</section>
+    <section class="value-section">
+        <div class="container">
+            <span class="badge">Declaração de Valor</span>
+            <div class="grid-2">
+                <div>
+                    <h2>Propósito do Método</h2>
+                    <p class="mission-text">
+                        Transformar obrigações legais, técnicas e de segurança em um <strong>ativo estratégico</strong> que impulsiona o crescimento do seu negócio. <br><br>
+                        Reduzimos risco real e desbloqueamos receita sustentável.
+                    </p>
+                </div>
+                <div>
+                    <ul class="value-list">
+                        <li>Redução de risco P0 (prioridade zero)</li>
+                        <li>Continuidade operacional garantida</li>
+                        <li>Aumento mensurável de conversão</li>
+                        <li>Sistema integrado de evidências</li>
+                        <li>Proteção contra interdições e multas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <span class="badge">Diagnóstico Crítico</span>
+        <h2>Por Que Este Piloto É Necessário</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>O Problema</h3>
+                <p>Conformidade fragmentada em silos isolados: documentos, NRs, laudos e cursos gerenciados sem integração estratégica.</p>
+            </div>
+            <div class="card">
+                <h3>O Ponto Cego</h3>
+                <p>Custo oculto da não-integração: paradas operacionais não planejadas, multas evitáveis e contratos enterprise perdidos por gaps de conformidade.</p>
+            </div>
+            <div class="card">
+                <h3>Por Que Importa</h3>
+                <p>Impacto direto em margem operacional, taxa de conversão e capacidade de escalar operações com segurança jurídica.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="architecture">
+        <div class="container">
+            <h2>Arquitetura do Método</h2>
+            <p style="color: var(--text-light)">Visão Geral dos Núcleos Integrados</p>
+            
+            <div class="radial-system">
+                <div class="center-circle">SISTEMA INTEGRADO</div>
+                <div class="nucleo n1"><strong>Mapa de Risco</strong><br>Priorização P0/P1/P2</div>
+                <div class="nucleo n2"><strong>Trilhas por Risco</strong><br>Estratégias específicas</div>
+                <div class="nucleo n3"><strong>Plataforma</strong><br>Dados e inteligência</div>
+                <div class="nucleo n4"><strong>Capacitação</strong><br>Treinamentos medidos</div>
+                <div class="nucleo n5"><strong>Orquestração</strong><br>Execução coordenada</div>
+                <div class="nucleo n6"><strong>Governança</strong><br>Evidências válidas</div>
+            </div>
+
+            <p class="footer-note">Cada núcleo opera de forma interdependente, criando um sistema robusto de proteção e crescimento empresarial.</p>
+        </div>
+    </section>
+
+    <footer style="padding: 50px 0; text-align: center; border-top: 1px solid #EEE; font-size: 0.8rem; color: #BBB;">
+        &copy; 2026 Método Blindagem Empresarial. Uso exclusivo institucional.
+    </footer>
+
+</body>
+
+<script>
+    // 1. Efeito de Revelação ao Rolar (Scroll Reveal)
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, observerOptions);
+
+    // Aplicando a animação inicial em seções e cards
+    document.querySelectorAll('section, .card').forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "all 0.8s ease-out";
+        revealObserver.observe(el);
+    });
+
+    // 2. Interatividade na Arquitetura do Método (Gráfico Radial)
+    const centerCircle = document.querySelector('.center-circle');
+    const nucleos = document.querySelectorAll('.nucleo');
+    const originalText = centerCircle.innerText;
+
+    const descricoes = {
+        n1: "Identificação técnica de vulnerabilidades críticas.",
+        n2: "Fluxos customizados para cada nível de urgência.",
+        n3: "Dashboards de controle e indicadores de performance.",
+        n4: "Educação corporativa focada em conformidade.",
+        n5: "Gestão ativa de processos e cronogramas.",
+        n6: "Repositório de provas irrefutáveis para auditorias."
+    };
+
+    nucleos.forEach(n => {
+        n.addEventListener('mouseenter', () => {
+            const id = n.classList[1]; // Pega a classe n1, n2, etc
+            centerCircle.style.borderColor = "#6C5CE7";
+            centerCircle.style.fontSize = "0.75rem";
+            centerCircle.style.padding = "20px";
+            centerCircle.innerText = descricoes[id];
+        });
+
+        n.addEventListener('mouseleave', () => {
+            centerCircle.style.borderColor = "#D4AF37";
+            centerCircle.style.fontSize = "1rem";
+            centerCircle.innerText = originalText;
+        });
+    });
+
+    // 3. Header Dinâmico
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            header.style.boxShadow = "0 2px 20px rgba(0,0,0,0.05)";
+            header.style.position = "fixed";
+            header.style.width = "100%";
+            header.style.top = "0";
+            header.style.zIndex = "1000";
+        } else {
+            header.style.boxShadow = "none";
+            header.style.position = "relative";
+        }
+    });
+
+    /* ================================
+   Interação nos cards
+================================ */
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+        card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.08)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = 'none';
+    });
+});
+
+</script>
+
+</html>

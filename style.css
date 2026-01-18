@@ -1,0 +1,227 @@
+/* 1. Configurações Globais e Cores */
+:root {
+    --bg-color: #FAFAFA;
+    --text-main: #2D3436;
+    --text-light: #636E72;
+    --accent-purple: #EFE9F5;
+    --deep-purple: #6C5CE7;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 2. Header e Navegação (Estilo Tesla/Allan Porto) */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2000;
+    padding: 25px 0;
+    background: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 15px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.4rem;
+    transition: color 0.3s;
+}
+
+header.scrolled .logo {
+    color: var(--text-main);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+header.scrolled .nav-links a {
+    color: var(--text-main);
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-icons {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+header.scrolled .nav-icons {
+    color: var(--text-main);
+}
+
+/* 3. Hero Section com Imagem de Fundo */
+.hero-bg-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                      url('bg5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-text-wrapper {
+    max-width: 750px;
+    color: var(--white);
+}
+
+.hero-text-wrapper h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.pilot-tag {
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* 4. Conteúdo e Cards */
+section { padding: 100px 0; }
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--accent-purple);
+    color: var(--deep-purple);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; }
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: var(--accent-purple);
+    padding: 40px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+/* 5. Gráfico Radial */
+.architecture { text-align: center; background: var(--white); }
+
+.radial-system {
+    margin: 80px auto;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-circle {
+    width: 190px;
+    height: 190px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    z-index: 5;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.nucleo {
+    position: absolute;
+    width: 140px;
+    font-size: 0.85rem;
+    cursor: default;
+}
+
+/* Posicionamento Trigonométrico */
+.n1 { top: 0; left: 50%; transform: translateX(-50%); }
+.n2 { top: 25%; right: 0; }
+.n3 { bottom: 25%; right: 0; }
+.n4 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.n5 { bottom: 25%; left: 0; }
+.n6 { top: 25%; left: 0; }
+
+/* 6. Classes de Animação (Scroll Reveal) */
+.fade-up {
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: all 0.8s ease-out !important;
+}
+
+.fade-up.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
