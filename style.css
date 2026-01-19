@@ -35,7 +35,7 @@ h1, h2 {
     padding: 0 40px;
 }
 
-/* 2. Header e Navegação (Estilo Tesla/Allan Porto) */
+/* 2. Header e Navegação */
 header {
     position: fixed;
     top: 0;
@@ -59,14 +59,16 @@ header.scrolled {
 }
 
 .logo {
-    color: var(--white);
+    color: #D4AF37;
     font-weight: 600;
     font-size: 1.4rem;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 header.scrolled .logo {
     color: var(--text-main);
+    
 }
 
 .nav-links {
@@ -81,13 +83,16 @@ header.scrolled .logo {
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: color 0.3s;
+    transition: color 0.3s;    
 }
 
 header.scrolled .nav-links a {
     color: var(--text-main);
 }
 
+a{
+    text-decoration: none;
+}
 .nav-links a:hover {
     color: var(--gold);
 }
@@ -157,17 +162,55 @@ section { padding: 100px 0; }
 
 .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; }
 
+/* --- Restaurando Estilo dos Cards de Diagnóstico --- */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 50px;
 }
 
 .card {
     background: var(--accent-purple);
     padding: 40px;
     border-radius: 12px;
-    transition: all 0.4s ease;
+    border: 1px solid rgba(108, 92, 231, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Transição suave */
+    cursor: default;
+}
+
+/* Efeito de animação ao passar o mouse (Hover) */
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    background: #fff; /* Fica branco no hover para destaque */
+    border-color: var(--deep-purple);
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif; /* Restaurando a fonte elegante */
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--deep-purple);
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Ajuste das fontes do restante da página */
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+}
+
+.mission-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 /* 5. Gráfico Radial */
