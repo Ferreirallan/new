@@ -1,84 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('mainHeader');
-    const statusText = document.getElementById('status-text');
-    const originalText = statusText.innerText;
-
-    // 1. Header Dinâmico
+    // 1. Controle do Header ao Rolar
     window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 80);
+        document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // 2. Efeito de Escrita (Hero)
-    const h1 = document.querySelector('.hero-text-wrapper h1');
-    const text = h1.innerText;
-    h1.innerText = '';
-    let i = 0;
-    (function type() {
-        if (i < text.length) {
-            h1.innerHTML += text.charAt(i++);
-            setTimeout(type, 40);
-        }
-    }());
-
-    // 3. Interatividade Radial
-    document.querySelectorAll('.nucleo').forEach(n => {
-        n.addEventListener('mouseenter', () => {
-            statusText.style.color = "#6C5CE7";
-            statusText.style.transform = "scale(1.05)";
-            statusText.innerText = n.getAttribute('data-info');
+    // 2. Contador Dinâmico de Estatísticas (Social Proof)
+    const animateStats = () => {
+        document.querySelectorAll('.stat-val').forEach(s => {
+            const target = +s.getAttribute('data-val');
+            let count = 0;
+            const update = () => {
+                const speed = target / 60; // Duração da animação
+                if(count < target) {
+                    count += speed;
+                    s.innerText = Math.ceil(count);
+                    setTimeout(update, 20);
+                } else {
+                    s.innerText = target;
+                }
+            };
+            update();
         });
-        n.addEventListener('mouseleave', () => {
-            statusText.style.color = "#1A1A1A";
-            statusText.style.transform = "scale(1)";
-            statusText.innerText = originalText;
-        });
-    });
+    };
 
-    // 4. Scroll Reveal Progressivo
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Delay em cascata para cards
-                setTimeout(() => {
-                    entry.target.classList.add('active');
-                }, index * 100);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('section, .card, .hero-text-wrapper, .stat-item').forEach(el => {
-        el.classList.add('reveal');
-        observer.observe(el);
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const statusText = document.getElementById('status-text');
-    const originalText = statusText.innerText;
-
-    // 1. Interatividade do Gráfico
-    document.querySelectorAll('.nucleo').forEach(n => {
-        n.addEventListener('mouseenter', () => {
-            statusText.style.color = "#6C5CE7";
-            statusText.innerText = n.getAttribute('data-info');
-        });
-        n.addEventListener('mouseleave', () => {
-            statusText.style.color = "#1A1A1A";
-            statusText.innerText = originalText;
+    // 3. Sistema de Hover na Arquitetura (Filtro de Conteúdo)
+    const archDetail = document.getElementById('arch-detail');
+    document.querySelectorAll('.node').forEach(node => {
+        node.addEventListener('mouseenter', () => {
+            const description = node.getAttribute('data-desc');
+            archDetail.innerHTML = `<strong>${node.innerText}:</strong> ${description}`;
+            archDetail.style.opacity = '1';
         });
     });
 
-    // 2. Garante que a seção apareça ao rolar
+    // 4. Observer de Revelação (Reveal)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                // Dispara contadores quando a seção de stats aparece
+                if(entry.target.classList.contains('stats-premium')) animateStats();
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.architecture, .reveal').forEach(el => {
-        el.classList.add('reveal');
-        observer.observe(el);
-    });
+    document.querySelectorAll('.reveal, .stats-premium').forEach(el => observer.observe(el));
 });
