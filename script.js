@@ -48,3 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal, .stats-premium, .ex-card').forEach(el => observer.observe(el));
 });
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+    });
+});
+
+document.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', () => {
+        archDetail.innerHTML = `<strong>${node.innerText}:</strong> ${node.getAttribute('data-desc')}`;
+    });
+});
