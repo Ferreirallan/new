@@ -331,3 +331,45 @@ body {
         margin: 20px auto;
     }
 }
+
+.footer-trust {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px 0;
+    font-size: 0.8rem;
+    color: #e5e7eb;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-whatsapp {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: 1px solid var(--orange-cta);
+    color: var(--orange-cta);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.footer-whatsapp:hover {
+    background: var(--orange-cta);
+    color: #fff;
+}
+.footer-lgpd {
+    margin-top: 8px;
+    font-size: 0.7rem;
+    color: #64748b;
+}
+.site-footer * {
+    transition: color 0.3s ease;
+}
+@media (max-width: 600px) {
+    .footer-trust {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
