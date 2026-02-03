@@ -112,3 +112,22 @@ const observerMetrics = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 document.querySelectorAll('#metricas').forEach(el => observerMetrics.observe(el));
+// Função para detectar o scroll e revelar elementos
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150; // Distância para ativar a animação
+
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", reveal);
+
+    // Para revelar elementos que já estão na tela ao carregar
+    reveal();
