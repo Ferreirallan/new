@@ -131,3 +131,14 @@ document.querySelectorAll('#metricas').forEach(el => observerMetrics.observe(el)
 
     // Para revelar elementos que já estão na tela ao carregar
     reveal();
+
+const blueprintObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Som de "escaner" ou apenas a animação visual
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.ex-card, .node').forEach(el => blueprintObserver.observe(el));
